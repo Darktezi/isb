@@ -1,16 +1,24 @@
+import logging
 
-def write_to_file(filename, content):
+
+logging.basicConfig(level=logging.INFO)
+
+
+def write_to_file(filename: str, content: str) -> None:
+    """Write content to choosen file"""
     try:
         with open(filename, 'w', encoding="utf8") as file:
             file.write(content)
-        print(f"Файл '{filename}' успешно записан.")
+            logging.info(f"Successfully written to file '{filename}'")
     except IOError:
-        print(f"Ошибка при записи файла '{filename}'.")
+        logging.error(f"Ошибка при записи файла '{filename}'.")
 
-def read_from_file(filename):
+def read_from_file(filename: str) -> str:
+    """Read and return content of the file"""
     try:
         with open(filename, 'r', encoding="utf8") as file:
             content = file.read()
+        logging.info(f"Successfully read from file '{filename}'")
         return content
     except IOError:
-        print(f"Ошибка при чтении файла '{filename}'.")
+        logging.error(f"Error while reading from file '{filename}'")
