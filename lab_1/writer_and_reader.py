@@ -11,12 +11,12 @@ def write_to_file(filename: str, content: str) -> None:
             file.write(content)
             logging.info(f"Successfully written to file '{filename}'")
     except IOError:
-        logging.error(f"Ошибка при записи файла '{filename}'.")
+        logging.error(f"Error while writing to file'{filename}'.")
 
 def read_from_file(filename: str) -> str:
     """Read and return content of the file"""
     try:
-        with open(filename, 'r', encoding="utf8") as file:
+        with open(filename, 'r+', encoding="utf8") as file:
             content = file.read()
         logging.info(f"Successfully read from file '{filename}'")
         return content

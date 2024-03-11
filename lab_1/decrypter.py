@@ -2,6 +2,7 @@ import argparse
 import json
 import logging
 import os
+
 from writer_and_reader import read_from_file, write_to_file
 
 
@@ -45,19 +46,19 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Perform character frequency analysis.")
     parser.add_argument("--input_file",
                         type=str,
-                        default=os.path.join('lab_1','task2','cod1.txt'),
+                        default=os.path.join('isb','lab_1','task2','cod1.txt'),
                         help="Path to the input file.")
     parser.add_argument("--output_file",
                         type=str,
-                        default=os.path.join('lab_1','task2','result.json'),
+                        default=os.path.join('isb','lab_1','task2','result.json'),
                         help="Path to the output JSON file.")
     parser.add_argument("--key",
                         type=str,
-                        default=os.path.join('lab_1','task2','key.json'),
+                        default=os.path.join('isb','lab_1','task2','key.json'),
                         help="Path to the key JSON file.")
     parser.add_argument("--decrypted_file",
                         type=str,
-                        default=os.path.join('lab_1','task2','decrypted_text.txt'),
+                        default=os.path.join('isb','lab_1','task2','decrypted_text.txt'),
                         help="Path to the decrypted text file.")
     args = parser.parse_args()
     

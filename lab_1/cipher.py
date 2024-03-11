@@ -1,6 +1,7 @@
 import argparse
 import logging
 import os
+
 from writer_and_reader import read_from_file, write_to_file
 
 
@@ -31,7 +32,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Caesar encryption.')
     parser.add_argument('--input_file',
                         type=str,
-                        default= os.path.join('lab_1','task1', 'input.txt'),
+                        default=os.path.join('isb','lab_1','task1', 'input.txt'),
                         help='Input file path.')
     parser.add_argument('--shift',
                         type=int,
@@ -39,7 +40,7 @@ if __name__ == '__main__':
                         help='Shift value.')
     parser.add_argument('--output_file',
                         type=str,
-                        default=os.path.join('lab_1','task1', 'encrypted_text.txt'),
+                        default=os.path.join('isb','lab_1','task1', 'encrypted_text.txt'),
                         help='Output file path.')
 
     args = parser.parse_args()
