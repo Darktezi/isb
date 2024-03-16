@@ -1,6 +1,7 @@
 import argparse
 import logging
 import os
+from enum import Enum
 
 from writer_and_reader import read_from_file, write_to_file
 
@@ -8,43 +9,31 @@ from writer_and_reader import read_from_file, write_to_file
 logging.basicConfig(level=logging.INFO)
 
 
+class CaesarMode(Enum):
+    ENCRYPT = 1
+    DECRYPT = 2
+
 rus_alphabet = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
 
-def caesar_encrypt(text: str, shift: int) -> str:
+def caesar_cipher(text: str, shift: int, mode: CaesarMode) -> str:
     """
-    This function takes a text and a shift value as input 
-    and performs Caesar encryption on the text.
+    This function performs Caesar encryption or decryption based on the mode.
     """
     try:
-        encrypted_text = ''
+        result_text = ''
         for char in text:
             if char in rus_alphabet:
                 position = rus_alphabet.index(char)
-                new_position = (position + shift) % len(rus_alphabet)
-                encrypted_text += rus_alphabet[new_position]
+                if mode == CaesarMode.ENCRYPT:
+                    new_position = (position + shift) % len(rus_alphabet)
+                else:
+                    new_position = (position - shift) % len(rus_alphabet)
+                result_text += rus_alphabet[new_position]
             else:
-                encrypted_text += char
-        return encrypted_text
+                result_text += char
+        return result_text
     except Exception as ex:
-        logging.error(f"Can't encrypt text: {ex}\n")
-
-def caesar_decrypt(encrypted_text: str, shift: int) -> str:
-    """
-    This function takes an encrypted text and a shift value as input 
-    and performs Caesar decryption on the text.
-    """
-    try:
-        decrypted_text = ''
-        for char in encrypted_text:
-            if char in rus_alphabet:
-                position = rus_alphabet.index(char)
-                new_position = (position - shift) % len(rus_alphabet)
-                decrypted_text += rus_alphabet[new_position]
-            else:
-                decrypted_text += char
-        return decrypted_text
-    except Exception as ex:
-        logging.error(f"Can't decrypt text: {ex}\n")
+        logging.error(f"Error: {ex}\n")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Caesar encryption.')
@@ -70,7 +59,7 @@ if __name__ == '__main__':
     try:
         text = read_from_file(args.input_file)
         encrypted_text = read_from_file(args.output_crypted)
-        write_to_file(args.output_crypted, caesar_encrypt(text, args.shift))
-        write_to_file(args.output_decrypted, caesar_decrypt(encrypted_text, args.shift))
+        write_to_file(args.output_crypted, caesar_cipher(text, args.shift,  CaesarMode.ENCRYPT))
+        write_to_file(args.output_decrypted, caesar_cipher(encrypted_text, args.shift, CaesarMode.DECRYPT))
     except Exception as ex:
         logging.error(f"Can't encrypt or decrypt text: {ex}")

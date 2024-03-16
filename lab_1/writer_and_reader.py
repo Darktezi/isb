@@ -12,6 +12,8 @@ def write_to_file(filename: str, content: str) -> None:
             logging.info(f"Successfully written to file '{filename}'")
     except IOError:
         logging.error(f"Error while writing to file'{filename}'.")
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
 
 def read_from_file(filename: str) -> str:
     """Read and return content of the file"""
