@@ -24,3 +24,5 @@ def read_from_file(filename: str) -> str:
         return content
     except IOError:
         logging.error(f"Error while reading from file '{filename}'")
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
