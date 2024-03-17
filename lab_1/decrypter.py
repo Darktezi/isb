@@ -27,6 +27,7 @@ def char_freq_analysis(text: str, json_text:str) -> dict:
     except Exception as ex:
         logging.error(f"Can't do analysis: {ex}\n")
 
+
 def decrypt_text(encrypted_text: str, key_path: str, decrypted_text: str) -> None:
     """Decrypt the given encrypted text using the key from the JSON file
     and save the result in a text file"""

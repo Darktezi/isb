@@ -13,7 +13,11 @@ class CaesarMode(Enum):
     ENCRYPT = 1
     DECRYPT = 2
 
+
+
 rus_alphabet = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+
+
 
 def caesar_cipher(text: str, shift: int, mode: CaesarMode) -> str:
     """
@@ -24,16 +28,18 @@ def caesar_cipher(text: str, shift: int, mode: CaesarMode) -> str:
         for char in text:
             if char in rus_alphabet:
                 position = rus_alphabet.index(char)
-                if mode == CaesarMode.ENCRYPT:
-                    new_position = (position + shift) % len(rus_alphabet)
-                else:
-                    new_position = (position - shift) % len(rus_alphabet)
+                match mode:
+                    case CaesarMode.ENCRYPT:
+                        new_position = (position + shift) % len(rus_alphabet)
+                    case CaesarMode.DECRYPT:
+                        new_position = (position - shift) % len(rus_alphabet)
                 result_text += rus_alphabet[new_position]
             else:
                 result_text += char
         return result_text
     except Exception as ex:
         logging.error(f"Error: {ex}\n")
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Caesar encryption.')
