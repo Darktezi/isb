@@ -11,7 +11,7 @@ public class sequence_generator {
     }
 
     public static void main(String[] args) {
-        int sequenceLength = 64;
+        int sequenceLength = 128;
         generateRandomSequence(sequenceLength);
     }
 }

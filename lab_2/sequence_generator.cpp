@@ -10,7 +10,7 @@ void generateRandomSequence(int length) {
 }
 
 int main() {
-    int sequenceLength = 64;
+    int sequenceLength = 128;
     generateRandomSequence(sequenceLength);
     return 0;
 }
