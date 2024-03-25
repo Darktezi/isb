@@ -1,13 +1,14 @@
 import os
 import json
-from math import erfc
+import math
 
 
-def frequency_test(bitstring):
-    n = len(bitstring)
-    ones = bitstring.count('1')
-    proportion = abs(ones / n - 0.5)
-    s_obs = 2 * proportion / (n ** 0.5)
-    p_value = erfc(s_obs / 2 ** 0.5)
-
+def frequency_test(sequence):
+    n = len(sequence)
+    ones_count = sequence.count('1')
+    zeroes_count = sequence.count('0')
+    s_obs = abs(ones_count - zeroes_count) / math.sqrt(n)
+    p_value = math.erfc(s_obs / math.sqrt(2))
     return p_value
+
+
