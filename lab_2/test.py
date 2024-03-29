@@ -12,7 +12,15 @@ pi = {0: 0.2148, 1: 0.3672, 2: 0.2305, 3: 0.1875}
 
 
 def frequency_test(sequence: str) -> float:
-    """Performs a frequency test on the given binary sequence."""
+    """
+    Performs a frequency test on the given binary sequence.
+    
+    Args:
+        sequence (str): The binary sequence to test.
+        
+    Returns:
+        float: The p-value resulting from the test.
+    """
     try:   
         ones_count = sequence.count('1')
         zeros_count = sequence.count('0')
@@ -24,7 +32,15 @@ def frequency_test(sequence: str) -> float:
 
 
 def identical_consecutive_bits(sequence: str) -> float:
-    """Performs a test for the presence of identical consecutive bits in the given binary sequence."""
+    """
+    Performs a test for the presence of identical consecutive bits in the given binary sequence.
+    
+    Args:
+        sequence (str): The binary sequence to test.
+        
+    Returns:
+        float: The p-value resulting from the test.
+    """
     try:
         proportion = sequence.count('1') / len(sequence)
         if math.fabs(proportion - 0.5) > (2/math.sqrt(len(sequence))):
@@ -39,7 +55,15 @@ def identical_consecutive_bits(sequence: str) -> float:
 
 
 def longest_sequence_test(sequence: str) -> float:
-    """Performs a test for the presence of longest sequences of identical bits in the given binary sequence."""
+    """
+    Performs a test for the presence of longest sequences of identical bits in the given binary sequence.
+    
+    Args:
+        sequence (str): The binary sequence to test.
+        
+    Returns:
+        float: The p-value resulting from the test.
+    """
     try:
         i_seq = list(map(int, sequence))
         block_size = 8
