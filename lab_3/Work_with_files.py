@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO)
 
 def write_data(text: str, path: str) -> None:
     """
-    Write Data in file
+    Write data in file
     """
     try:
         with open(path, 'w', encoding='utf-8') as file:
@@ -21,7 +21,7 @@ def write_data(text: str, path: str) -> None:
 
 def read_data(path: str) -> str:
     """
-    Read data from the file
+    Read data from file
     """
     try:
         with open(path, 'r', encoding='utf-8') as file:
@@ -33,7 +33,7 @@ def read_data(path: str) -> str:
 
 def write_data_bytes(data: bytes, path: str) -> None:
     """
-    Write Data in file in bytes
+    Write data in file(in bytes)
     """
     try: 
         with open(path, 'wb') as file:
@@ -44,7 +44,7 @@ def write_data_bytes(data: bytes, path: str) -> None:
 
 def read_data_bytes(path: str) -> bytes:
     """
-    Read data from the file in bytes
+    Read data from file(in bytes)
     """
     try:
         with open(path, 'rb') as file:
@@ -68,7 +68,6 @@ def serialization_symmetric_key(key: bytes, path: str) -> None:
 def deserialization_symmetric_key(path: str) -> bytes:
     """
     Deserialization symmetric key from file
-    ------
     """
     try:
         with open(path, mode='rb') as key_file: 
