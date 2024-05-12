@@ -8,7 +8,6 @@ class AESCipher:
     """
     Class providing methods for symmetric cryptography operations.
     """
-    
     def encrypt_text(self, text: bytes, sym_key:bytes) -> bytes:
         """"
         Encrypt text with symmetric key
@@ -20,6 +19,7 @@ class AESCipher:
         encryptor = cipher.encryptor()
         crypted_text = encryptor.update(padded_data) + encryptor.finalize()
         return iv + crypted_text
+
 
     def decrypt_text(self, crypted_text: bytes, sym_key: bytes) -> bytes:
         """
