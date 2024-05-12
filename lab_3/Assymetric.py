@@ -3,7 +3,9 @@ from cryptography.hazmat.primitives import hashes
 
 class RSACipher:
     """Class for asymmetric cryptography operations."""
-    def generate_key_pair(self, key_size: int) -> tuple:
+
+    @staticmethod
+    def generate_key_pair(key_size: int) -> tuple:
         """
         Generate an RSA key pair.
         """
@@ -11,8 +13,8 @@ class RSACipher:
         public_key = private_key.public_key()
         return private_key, public_key
     
-
-    def encrypt_with_public_key(self, text: bytes, public_key: rsa.RSAPublicKey) -> bytes:
+    @staticmethod
+    def encrypt_with_public_key(text: bytes, public_key: rsa.RSAPublicKey) -> bytes:
         """
         Encrypts text using public key.
         """
@@ -21,7 +23,8 @@ class RSACipher:
                                                     label=None))
 
 
-    def decrypt_with_private_key(self, crypted_text: bytes, private_key: rsa.RSAPrivateKey) -> bytes:
+    @staticmethod
+    def decrypt_with_private_key(crypted_text: bytes, private_key: rsa.RSAPrivateKey) -> bytes:
         """
         Decrypts crypted text using private key.
         """
