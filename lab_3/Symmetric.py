@@ -8,6 +8,13 @@ class AESCipher:
     """
     Class providing methods for symmetric cryptography operations.
     """
+    def generate_key(self) -> bytes:
+        """
+        Generate a symmetric key
+        """
+        return os.urandom(16)
+
+
     def encrypt_text(self, text: bytes, sym_key:bytes) -> bytes:
         """"
         Encrypt text with symmetric key
